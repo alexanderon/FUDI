@@ -7,6 +7,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Mostardesign_Sofia_Pro_Regular.otf">
+            <string>SofiaProRegular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Sign Up View Controller-->
         <scene sceneID="m7s-tY-s3X">
@@ -2174,9 +2179,6 @@ Cg
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.56862745098039214" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="21" width="50" height="15"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="262-Xb-D75">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -2624,23 +2626,23 @@ Cg
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="5Ob-3Q-cpM"/>
-                            <exclude reference="YNS-D5-Co1"/>
                             <exclude reference="FFP-n3-90P"/>
+                            <exclude reference="YNS-D5-Co1"/>
                             <exclude reference="6mS-ER-hVQ"/>
-                            <exclude reference="hDa-kz-XZ2"/>
                             <exclude reference="DnD-rA-CvC"/>
                             <exclude reference="abB-Yy-GeI"/>
+                            <exclude reference="hDa-kz-XZ2"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="constraints">
                             <include reference="5Ob-3Q-cpM"/>
-                            <include reference="YNS-D5-Co1"/>
                             <include reference="FFP-n3-90P"/>
+                            <include reference="YNS-D5-Co1"/>
                             <include reference="6mS-ER-hVQ"/>
-                            <include reference="hDa-kz-XZ2"/>
                             <include reference="DnD-rA-CvC"/>
                             <include reference="abB-Yy-GeI"/>
+                            <include reference="hDa-kz-XZ2"/>
                         </mask>
                     </variation>
                 </view>

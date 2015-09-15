@@ -39,12 +39,6 @@
             self.imgProfile.image=image;
         }
         
-       /* {
-       
-            [self.btnEdit setBackgroundColor:[UIColor colorWithRed:(0/255.0) green:(153/255.0) blue:(200/255.0) alpha:1]];
-            [self.btnChangePass setBackgroundColor:[UIColor colorWithRed:(0/255.0) green:(153/255.0) blue:(200/255.0) alpha:1]];
-            
-        }*/
         
         
         self.btnEdit = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -306,7 +300,26 @@
 }
 
 - (IBAction)btnImagePickerClick:(id)sender {
-    [self pickMediaFromSource:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+                                                                   message:@"This is an alert."
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* gallaryAction = [UIAlertAction actionWithTitle:@"From Gallary" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                          
+                                                              [self pickMediaFromSource:UIImagePickerControllerSourceTypePhotoLibrary];
+
+                                                          }];
+    UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Click from Camera" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {}];
+
+    
+    [alert addAction:gallaryAction];
+    [alert addAction:cameraAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
 
 }
 
