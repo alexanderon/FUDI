@@ -36,14 +36,11 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"view will");
-}
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    
-    NSLog(@"view did");
+    [super viewDidAppear:YES];
+   
     
     for (int i=1; i<6; i++) {
         
@@ -60,11 +57,6 @@
         ivLeftVIew.image = [UIImage imageNamed:(NSString *)[img objectAtIndex:i-1]];
         [textField.leftView addSubview:ivLeftVIew];
         
-        /* self.txtEmail.leftViewMode=UITextFieldViewModeAlways;
-         self.txtEmail.leftView =[[UIView alloc]initWithFrame:CGRectMake(0  ,0, 40, 40)];
-         UIImageView *img1 =[[UIImageView alloc]initWithFrame:CGRectMake(10,10,20,20)];
-         img1.image =[UIImage imageNamed:@"mail.png"];
-         [self.txtEmail.leftView addSubview:img1];*/
         
         
     }
@@ -76,10 +68,6 @@
 }
 
 
--(void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"viewwill dis");
-}
-
 
 
 
@@ -89,11 +77,7 @@
 - (NSString *)validateForm {
     NSString *errorMessage;
     
-/*    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
-    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
-    NSString *regex = stricterFilter ? stricterFilterString : laxString;*/
-    
- //   NSString *regex =@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+
     NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSString *regexMobile=@"[0-9]{10}$";
     
@@ -159,7 +143,6 @@
     usrProfile.userPassword=self.txtPassword.text;
    
     [[[UIAlertView alloc]initWithTitle:@"SignUp" message:@"signed Up Successfully" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil]show];
-    NSLog(@"%@",[[Database getInstance]Select:@"Student"]);
     
     self.txtMobile.text=@"";
     self.txtFirstName.text=@"";

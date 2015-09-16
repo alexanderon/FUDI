@@ -26,5 +26,5 @@
 
 
 - (IBAction)btnBack:(id)sender;
-- (void)adjustToContainAnnotationView:(AnnotationView *)annotationView animated:(BOOL)animated;
+
 @end

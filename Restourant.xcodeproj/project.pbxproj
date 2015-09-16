@@ -303,7 +303,6 @@
 				B7DEC9B01BA7E44500BD1962 /* Annotation.m */,
 				B7E0115E1B99699900954F2E /* CoreLocation.framework */,
 				B7E0115C1B99699200954F2E /* MapKit.framework */,
-				B75FFF5E1B987A11001E79C1 /* libsqlite3.dylib */,
 				B75FFF5C1B9877B9001E79C1 /* Restourant.sqlite */,
 				B75FFF3B1B984477001E79C1 /* REFrostedViewController */,
 				B75FFF371B981812001E79C1 /* TableCell */,
@@ -489,6 +488,7 @@
 				B75FFF381B98184F001E79C1 /* RestaurantListTableViewCell.h */,
 				B75FFF391B98184F001E79C1 /* RestaurantListTableViewCell.m */,
 				B75FFF541B984E00001E79C1 /* SideMenuCellTableViewCell.h */,
+				B75FFF5E1B987A11001E79C1 /* libsqlite3.dylib */,
 				B75FFF551B984E00001E79C1 /* SideMenuCellTableViewCell.m */,
 			);
 			name = TableCell;

@@ -24,6 +24,7 @@
     NSMutableArray *arrLocation;
     Reachability *networkReachability;
     NetworkStatus networkStatus;
+   // MapViewController *controllerx;
   }
 
 -(void)refresh;
@@ -31,19 +32,18 @@
 //@property (strong, nonatomic) NSMutableArray* allTableData;
 @property (strong, nonatomic) NSMutableArray* filteredTableData;
 @property  (strong,nonatomic)   NSMutableArray* checkinsCount;
-@property   (strong,nonatomic)  NSMutableArray* usersCount;
-@property   (strong,nonatomic)  NSMutableArray *arrAdress;
-@property   (strong,nonatomic)  NSMutableArray *distance;
-@property   (strong,nonatomic)  NSMutableArray *stat;
+@property  (strong,nonatomic)  NSMutableArray* usersCount;
+@property  (strong,nonatomic)  NSMutableArray *arrAdress;
+@property  (strong,nonatomic)  NSMutableArray *distance;
+@property  (strong,nonatomic)  NSMutableArray *stat;
 @property (atomic)  BOOL isfilterd;
 
 @end
 
 @implementation HomeViewController
 
-//@synthesize allTableData;
+
 @synthesize filteredTableData;
-//@synthesize isfilterd;
 @synthesize checkinsCount;
 @synthesize usersCount;
 @synthesize arrAdress;
@@ -54,6 +54,8 @@
     
     [super viewDidLoad];   
  
+  //  controllerx=( MapViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    
     
     //reachablity internet
     networkReachability = [Reachability reachabilityForInternetConnection];
@@ -86,7 +88,9 @@
     
     //make searchbar visible false
     self.searchBar.hidden=YES;
+    self.searchBar.superview.hidden=YES;
     self.viewSorting.hidden =YES;
+    self.viewSorting.superview.hidden=YES;
     
    }
 
@@ -103,32 +107,24 @@
     [checkinsCount removeAllObjects];
     
     
-    NSDictionary *stats =[[NSDictionary alloc]init];
-    
+   // NSDictionary *stats =[[NSDictionary alloc]init];
+    NSDictionary *stats;
     for (int i=0; i<filteredTableData.count; i++) {
         NSDictionary *van =[filteredTableData objectAtIndex:i];
         stats=[van objectForKey:@"stats"];
         [stat addObject:stats];
-        // NSLog(@"%@",stat);
         van =[van objectForKey:@"location"];
-        
-      //  NSLog(@"%@",van);
-        
         [distance addObject:(NSString *)[van valueForKey:@"distance"]];
-        NSLog(@"%d",(int)[distance objectAtIndex:i]);
         NSMutableDictionary *dict_local =[[NSMutableDictionary alloc]init];
         [dict_local setObject:[van valueForKey:@"lat"] forKey:@"lat"];
         [dict_local setObject:[van valueForKey:@"lng"] forKey:@"lng"];
         
         [arrLocation addObject:dict_local];
-        //   [distance addObject:[van valueForKey:@"distance"]];    
-     
         [checkinsCount addObject:[stats valueForKey:@"checkinsCount"]];
-        [usersCount addObject:[stats valueForKey:@"usersCount"]
-         ];
+        [usersCount addObject:[stats valueForKey:@"usersCount"]];
         
         {
-            NSDictionary *location =[[arr objectAtIndex:i]valueForKey:@"location"];
+            NSDictionary *location =[[filteredTableData objectAtIndex:i]valueForKey:@"location"];
             NSMutableArray *adress=(NSMutableArray *)[[location objectForKey:@"formattedAddress"]mutableCopy];
             NSString * result ;
             result=[adress componentsJoinedByString:@" "];
@@ -202,9 +198,6 @@
     }
 
 
--(void)viewDidAppear:(BOOL)animated{
-    
-}
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -214,14 +207,14 @@
     controller.lblname=[[filteredTableData objectAtIndex:indexPath.row]valueForKey:@"name"];
     controller.vanue=[filteredTableData objectAtIndex:indexPath.row];
     controller.lbladress=(NSString *)[arrAdress objectAtIndex:indexPath.row];
-    //NSLog(@"%@",[[stat objectAtIndex:indexPath.row]valueForKey:@"usersCount"]);
     controller.lblcheckinsCount= [NSString stringWithFormat:@"%@",[[stat objectAtIndex:indexPath.row]valueForKey:@"usersCount"]];
 
     [self.view endEditing:YES];
     self.searchBar.hidden=YES;
+    self.searchBar.superview.hidden=YES;
         
     [self.navigationController pushViewController:controller animated:YES];
-    [controller.frostedViewController.menuViewController.view removeFromSuperview];
+
     
 }
 
@@ -288,16 +281,23 @@
 - (IBAction)btnSearchClick:(id)sender {
     
     if(self.searchBar.hidden ==NO){
+         self.searchBar.superview.hidden=YES;
          self.searchBar.hidden=YES;
+      
         [self.view endEditing:YES];
     }
     else
+    {
+        self.searchBar.superview.hidden=NO;
         self.searchBar.hidden=NO;
-        
+}
     
 }
 
 - (IBAction)btnShorting:(id)sender {
+    
+    
+    
     
   
         self.viewSorting.hidden=NO;
@@ -330,6 +330,7 @@
         
         filteredTableData =[[arr sortedArrayUsingDescriptors:sortedDescriptors] mutableCopy];
         self.viewSorting.hidden =YES;
+        self.viewSorting.superview.hidden=YES;
         [self refresh];
         [self.myTableView reloadData];
     
@@ -344,9 +345,11 @@
     
     if(self.viewSorting.hidden==FALSE){
         self.viewSorting.hidden=TRUE;
+        self.viewSorting.superview.hidden =TRUE;
     }
     else{
         self.viewSorting.hidden=FALSE;
+        self.viewSorting.superview.hidden=FALSE;
     }
         
     
@@ -362,16 +365,13 @@
     {
       
         [filteredTableData removeAllObjects];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS %@",text];
-    
+        
+        NSPredicate* predicate=[NSPredicate predicateWithFormat:@"name contains[c] %@",text];
         filteredTableData = [[arr filteredArrayUsingPredicate:predicate] mutableCopy];
         [self refresh];
         [self.myTableView reloadData];
         
-      /*  NSLog(@"%@",[NSString stringWithFormat:@"%@",[usersCount objectAtIndex:0]]);
-       NSLog(@"%@",[NSString stringWithFormat:@"CheckIn Count: %@",[checkinsCount objectAtIndex:0]]);
-       NSLog(@"%@",[NSString stringWithFormat:@"Distance: %@",[distance objectAtIndex:0]]);*/
-    }
+        }
     else
     {
         [filteredTableData removeAllObjects];

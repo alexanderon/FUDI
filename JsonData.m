@@ -33,49 +33,24 @@
          
          id json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
          
-         NSDictionary *dict =[[NSDictionary alloc]init];
-         
+     
+         NSDictionary *dict ;
          dict=[json objectForKey:@"response"];
          venues=[dict objectForKey:@"venues"];
     
-         
-         NSDictionary *stats =[[NSDictionary alloc]init];
-         
          for (int i=0; i<venues.count; i++) {
              
              NSDictionary *van =[venues objectAtIndex:i];
              
-             stats=[van objectForKey:@"stats"];
-             van =[van objectForKey:@"location"];
+                    van =[van objectForKey:@"location"];
              
              NSMutableDictionary *dict_local =[[NSMutableDictionary alloc]init];
              [dict_local setObject:[van valueForKey:@"lat"] forKey:@"lat"];
              [dict_local setObject:[van valueForKey:@"lng"] forKey:@"lng"];
-//             
-//             
-//             [arrLocation addObject:dict_local];
-//             
-//             
-//             [allTableData addObject:[[arr objectAtIndex:i]valueForKey:@"name"]];
-//             
-//             //             NSLog(@"%@",checkinsCount);
-//             //             NSLog(@"%@",stats);
-//             
-//             [checkinsCount addObject:[stats valueForKey:@"checkinsCount"]];
-//             
-//             //             NSLog(@"%@",[stats valueForKey:@"checkinsCount"]);
-//             //             NSLog(@"%lu",checkinsCount.count);
-//             [usersCount addObject:[stats valueForKey:@"usersCount"]];
-//             
-//             
-             
-             //    NSLog(@"%@",allTableData);
+
              
          }
          
-         
-      //   [self.myTableView reloadData];
-         //   NSLog(@"%@",arrLocation);
      }];   
     
 }

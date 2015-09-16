@@ -12,13 +12,16 @@
 
 
 @interface MapViewController ()
-
+{
+    NSArray*    annotations;
+}
 
 @property (strong, nonatomic)CLLocationManager *locationManger;
 @property (strong,nonatomic)NSString *currentName;
 @property (strong,nonatomic)NSString *currentLocation;
 @property (strong,nonatomic)NSString *currentAdress;
 @property (strong,nonatomic)NSString *currentusersCount;
+@property (atomic)CLLocationCoordinate2D currentCoordinate;
 
 @end
 
@@ -32,10 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    annotations =[[NSArray alloc]init];
     //gesture recognizer
  
-    
+  
    
     for(int i=0;i<arr.count;i++){
          
@@ -51,6 +54,7 @@
                 double longitude=[lng doubleValue];
          
                 CLLocationCoordinate2D coord =CLLocationCoordinate2DMake(lattitude, longitude);
+        self.currentCoordinate=coord;
          
         
         {
@@ -59,27 +63,19 @@
             annot.title=[NSString stringWithFormat:@"%d",i];
             NSLog(@"%d",i);
             [self.map addAnnotation:annot];
-
+            annotations=@[annot];
         }
         
-/*           // Place Annotation Point
-         MKPointAnnotation *annotation1 = [[MKPointAnnotation alloc] init];
-           //Setting Sample location Annotation
-          annotation1.title= [NSString stringWithFormat:@"%d",i];
-         NSLog(@"%d",i);
-         [annotation1 setCoordinate:coord];
-         //Add cordinates
-         [self.map addAnnotation:annotation1];*/
          
-         }
+}
   
     
-    {
+    
         self.locationManger=[[CLLocationManager alloc]init];
         
         if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
             [self.locationManger requestWhenInUseAuthorization];
-        }
+        
         
         self.map.delegate=self;
         self.locationManger.delegate=self;
@@ -88,10 +84,63 @@
         self.map.showsUserLocation=YES;
         
     }
-
     
-}
+    [self.map showAnnotations:map.annotations animated:YES];
+   }
 
+
+
+
+/*-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.map removeAnnotations:map.annotations];
+    for(int i=0;i<arr.count;i++){
+        
+        vanue =[arr objectAtIndex:i];
+        self.currentName =[NSString stringWithFormat:@"%@",[vanue objectForKey:@"name"]];
+        
+        NSDictionary *location =[vanue objectForKey:@"location"];
+        
+        NSString *lat =[location valueForKey:@"lat"];
+        NSString *lng =[location valueForKey:@"lng"];
+        
+        double lattitude =[lat doubleValue];
+        double longitude=[lng doubleValue];
+        
+        CLLocationCoordinate2D coord =CLLocationCoordinate2DMake(lattitude, longitude);
+        self.currentCoordinate=coord;
+        
+        
+        {
+            MKPointAnnotation *annot =[[MKPointAnnotation alloc]init];
+            [annot setCoordinate:coord];
+            annot.title=[NSString stringWithFormat:@"%d",i];
+            NSLog(@"%d",i);
+            [self.map addAnnotation:annot];
+            annotations=@[annot];
+        }
+        
+        
+    }
+    
+    
+    
+    self.locationManger=[[CLLocationManager alloc]init];
+    
+    if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManger requestWhenInUseAuthorization];
+        
+        
+        self.map.delegate=self;
+        self.locationManger.delegate=self;
+        self.locationManger.desiredAccuracy=kCLLocationAccuracyBest;
+        [self.locationManger startUpdatingLocation];
+        self.map.showsUserLocation=YES;
+        
+    }
+    
+    [self.map showAnnotations:annotations animated:YES];
+}*/
 
 #pragma mark -user location
 
@@ -100,20 +149,6 @@
     [self.map setRegion:[self.map regionThatFits:region] animated:YES];
 }
 
-
-
-#pragma mark -adding annotation
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-  //  self.map.showsUserLocation=YES;
-
-    [manager stopUpdatingLocation];
- 
-  //  NSLog(@"%@==== %d",_arrLocation,(int)_arrLocation.count);
-
-   
-}
 
 #pragma mark  - custom  view design
 
@@ -134,7 +169,7 @@
         {
             // If an existing pin view was not available, create one.
             pinView = [[AnnotationView alloc] initWithAnnotation:annotation
-                                                      reuseIdentifier:@"CustomPinAnnotationView"];
+                                                 reuseIdentifier:@"CustomPinAnnotationView"];
             pinView.image=[UIImage imageNamed:@"sel_map.png"];
             pinView.tag=[annotation.title integerValue];
             
@@ -160,9 +195,15 @@
         NSLog(@"%d",(int)view.tag);
         
         
-        
-        vanue =[arr objectAtIndex:view.tag];
-        self.currentName =[NSString stringWithFormat:@"%@",[vanue objectForKey:@"name"]];
+        if (arr.count >1) {
+            vanue =[arr objectAtIndex:view.tag];
+
+        }else
+        {
+            vanue=[arr objectAtIndex:0];
+            
+        }
+              self.currentName =[NSString stringWithFormat:@"%@",[vanue objectForKey:@"name"]];
         
    
         {
@@ -176,22 +217,22 @@
         {
             NSDictionary *stats =[vanue objectForKey:@"stats"];
             self.currentusersCount=[stats valueForKey:@"usersCount"];
-            NSLog(@"%@",self.currentusersCount);
+         
             
         }
         
         self.lblCustomView.text =self.currentName;
-        
-        
+        CGRect frame = self.customView1.frame;
+        frame.size = CGSizeMake(300, 80);
+        self.customView1.frame= frame;
         [view addSubview:self.customView1];
-       
-    addSubview:self.customView1.center = CGPointMake(self.customView1.bounds.size.width*0.1f, -self.customView1.bounds.size.height*0.5f);
+        self.customView1.center = CGPointMake(self.customView1.bounds.size.width*0.1f, -self.customView1.bounds.size.height*0.5f);
+        
         
     }
       
 
 }
-
 
 
 
@@ -202,30 +243,34 @@
 
 
 - (IBAction)callButtonClicked:(id)sender{
+ 
     
-  /*  DetailViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    controller.vanue=vanue;
-    controller.lblname=self.currentName;
+    for (UIViewController *vc in self.navigationController.viewControllers)
+    {
+        if ([vc isKindOfClass:[DetailViewController class]]) {
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+    }
+    
+    DetailViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     controller.lbladress=self.currentAdress;
-    controller.lblcheckinsCount =[NSString stringWithFormat:@"%@",self.currentusersCount];
-    NSLog(@"%@",self.currentusersCount);
-    [self.navigationController pushViewController:controller animated:YES];*/
+    controller.lblname=self.currentName;
+    controller.lblcheckinsCount=[NSString stringWithFormat:@"%@",self.currentusersCount];
+    controller.vanue=self.vanue;
     
-    [self.navigationController popViewControllerAnimated:YES];
-
+    [self.navigationController pushViewController:controller animated:YES];
+    
+   
 }
 
 
 #pragma  -mark -disappear annotation view
 
-
-
-
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
     
     [self.customView1 removeFromSuperview];
     
-         NSLog(@"annotation not selected");
     
 }
 

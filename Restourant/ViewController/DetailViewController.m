@@ -20,14 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-  
-
-  
-    
-   // textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    //textLabel.numberOfLines = 2;
-    
     self.lblAdress.lineBreakMode=NSLineBreakByWordWrapping;
     self.lblAdress.numberOfLines=0;
     self.lblAdress.preferredMaxLayoutWidth=[UIScreen mainScreen].bounds.size.width-40;
@@ -41,14 +33,15 @@
     self.lblCheckinsCount.text=_lblcheckinsCount;
     
     
-    
-    
 }
+
+#pragma mark -pan gesture disabling
 -(void)viewDidAppear:(BOOL)animated
 {
-//    [super viewDidAppear:YES];
-//    self.frostedViewController.panGestureEnabled = NO;
+    [super viewDidAppear:YES];
+    self.frostedViewController.panGestureEnabled = NO;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -66,8 +59,8 @@
     
     MapViewController *controller=( MapViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-    controller.arr=[[NSArray alloc]initWithObjects:self.vanue, nil];
-    NSLog(@"%@",controller.arr);
+    controller.arr=[[NSMutableArray alloc]initWithObjects:self.vanue, nil];
+
     [self.navigationController pushViewController:controller animated:YES];
 
 }

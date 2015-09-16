@@ -68,9 +68,7 @@
                 [self.frostedViewController hideMenuViewController];
                 return;
             }
-      /*      HomeViewController *VC=[self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-            NVC.viewControllers=@[VC];*/
-          
+            
             self.frostedViewController.contentViewController = NVC;
             self.previousTab=0;
          
@@ -82,8 +80,7 @@
         {
             
            
-         //   NSLog(@"%@",[NVC viewControllers]);
-            ProfileViewController *VC=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+           ProfileViewController *VC=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
 
 
             NVC.viewControllers=@[VC];
@@ -122,7 +119,7 @@
   
     
     cell.sideMenuTitle.text=(NSString *)[menuTitle objectAtIndex:indexPath.row];
-    NSLog(@"%@", cell.sideMenuTitle.text);
+
         cell.backgroundColor=[UIColor clearColor];
     
     cell.sideMenuImage.image=[UIImage imageNamed:[imageName objectAtIndex:indexPath.row]];

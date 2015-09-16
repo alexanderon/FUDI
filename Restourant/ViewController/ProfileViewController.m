@@ -34,7 +34,7 @@
         {
             NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
             NSData* myEncodedImageData = [userDefaults objectForKey:@"myEncodedImageDataKey"];
-            NSLog(@"%@",myEncodedImageData);
+           
             UIImage* image = [UIImage imageWithData:myEncodedImageData];
             self.imgProfile.image=image;
         }
@@ -85,9 +85,6 @@
     
     //creating the custom alertview
   
-  /*  myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enter The password", @"new_list_dialog")
-                                                          message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    myAlertView.alertViewStyle=UIAlertViewStylePlainTextInput;*/
     
 }
 
@@ -95,9 +92,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 
 
 #pragma mark- validation
@@ -141,22 +135,9 @@
    
     [self updateDisplay];
 
- /*   for (int i=1; i<8; i++) {
-        
-        UITextField *textField = (UITextField *)[self.view viewWithTag:i];
-        CALayer *bottomBorder = [CALayer layer];
-        bottomBorder.frame = CGRectMake(0.0f, textField.frame.size.height - 1, textField.frame.size.width,1.0f);
-        bottomBorder.backgroundColor = [UIColor greenColor].CGColor;
-        [textField.layer addSublayer:bottomBorder];
-    }*/
-
+ 
 }
 
-
-
-/*-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-}*/
 
 
 - (IBAction)btnSaveClick:(id)sender {
@@ -164,7 +145,6 @@
     
     UIButton *buttonEdit =(UIButton *) sender;
     
-    NSLog(@"%@",buttonEdit.titleLabel.text);
     
     if([buttonEdit.titleLabel.text isEqual:@"Save"])
     {
@@ -196,12 +176,11 @@
                 self.txtMobile.borderStyle=UITextBorderStyleLine;
         
          [buttonEdit setTitle:@"Save" forState:UIControlStateNormal];
-        }
-
-    
-
+    }
     
 }
+
+#pragma  -mark change password
 
 - (IBAction)btnChangePassClick:(id)sender {
 
@@ -227,7 +206,6 @@
         
     }else if([buttonPassChange.titleLabel.text isEqual:@"Update Password"] && [[Database getInstance]validateUser:self.txtEmial.text Password:self.txtPassword.text]){
         
-        NSLog(@"%d",[[Database getInstance]validateUser:self.txtEmial.text Password:self.txtPassword.text]);
         
         NSString *errorMessage =[self validateForm];
         
@@ -236,9 +214,6 @@
               [[[UIAlertView alloc]initWithTitle:@"Error" message:errorMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil]show ];
             return ;
         }
-        
-        
-      
         
         [[Database getInstance]Update:self.txtFirstName.text LastName:self.txtLastName.text Email:self.txtEmial.text Mobile:self.txtMobile.text Password:self.txtNewPassword.text UniqueId:userProfile.userId];
         
@@ -267,13 +242,6 @@
     {
         [[[UIAlertView alloc]initWithTitle:@"Alert" message:@"please enter valid Password " delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil]show];
     }
-    
-    
-
-    
-    
-    
-  
 }
 
 
@@ -299,6 +267,9 @@
     [self.frostedViewController presentMenuViewController];
 }
 
+
+#pragma -mark image picker
+
 - (IBAction)btnImagePickerClick:(id)sender {
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
@@ -312,7 +283,9 @@
 
                                                           }];
     UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Click from Camera" style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * action) {}];
+                                                         handler:^(UIAlertAction * action) {
+                                                          [self pickMediaFromSource:UIImagePickerControllerSourceTypeCamera];
+                                                         }];
 
     
     [alert addAction:gallaryAction];

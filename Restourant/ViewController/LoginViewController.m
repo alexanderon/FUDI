@@ -34,6 +34,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
+    [super viewDidAppear:YES];
+    
     for (int i=1; i<3; i++) {
         
         UITextField *textField = (UITextField *)[self.view viewWithTag:i];
@@ -44,9 +46,7 @@
     }
     
     
-   /*self.txtEmail.leftViewMode=UITextFieldViewModeAlways;
-     self.txtEmail.leftView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"mail.png"]];
-    self.txtEmail.leftView.frame=CGRectMake(self.txtEmail.frame.origin.x, self.txtEmail.frame.origin.y, 20 , 20);*/
+   
     
    
     self.txtEmail.leftViewMode=UITextFieldViewModeAlways;
@@ -59,10 +59,7 @@
 
     
     
-   /* self.txtPassword.leftViewMode=UITextFieldViewModeAlways;
-    self.txtPassword.leftView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"lock.png"]];
-    self.txtPassword.leftView.frame=CGRectMake(self.txtPassword.frame.origin.x, self.txtPassword.frame.origin.y, 20 , 20);*/
-    
+     
     self.txtPassword.leftViewMode=UITextFieldViewModeAlways;
     self.txtPassword.leftView =[[UIView alloc]initWithFrame:CGRectMake(0  ,0, 40, 40)];
     UIImageView *img2 =[[UIImageView alloc]initWithFrame:CGRectMake(10,10,20,20)];
@@ -131,12 +128,6 @@
             
             DEMORootViewController *VC=(DEMORootViewController *)[self.storyboard   instantiateViewControllerWithIdentifier:@"rootController"];
             
-//            UINavigationController *nav =             [[UINavigationController alloc]initWithRootViewController:VC];
-//            nav.navigationBarHidden = YES;
-//            [self.window setRootViewController:nav];
-            
-            
-            
             [self.navigationController pushViewController:VC animated:YES];
         }
         else{
@@ -147,10 +138,6 @@
         
 
         return;
-        
-        
-        
-        
     }
 
 - (IBAction)btnRegisterClick:(id)sender {
