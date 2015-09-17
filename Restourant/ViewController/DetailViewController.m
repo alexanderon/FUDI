@@ -59,7 +59,7 @@
     
     MapViewController *controller=( MapViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-    controller.arr=[[NSMutableArray alloc]initWithObjects:self.vanue, nil];
+    controller.arrVanues=[[NSMutableArray alloc]initWithObjects:self.vanue, nil];
 
     [self.navigationController pushViewController:controller animated:YES];
 

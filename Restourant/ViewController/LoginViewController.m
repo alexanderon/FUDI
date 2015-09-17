@@ -35,6 +35,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:YES];
+    NSArray* arrImage=[[NSArray alloc]initWithObjects:@"mail.png",@"lock.png", nil];
     
     for (int i=1; i<3; i++) {
         
@@ -43,30 +44,15 @@
         bottomBorder.frame = CGRectMake(0.0f, textField.frame.size.height - 1, textField.frame.size.width,1.0f);
         bottomBorder.backgroundColor = [UIColor whiteColor].CGColor;
         [textField.layer addSublayer:bottomBorder];
-    }
-    
-    
-   
-    
-   
-    self.txtEmail.leftViewMode=UITextFieldViewModeAlways;
-    self.txtEmail.leftView =[[UIView alloc]initWithFrame:CGRectMake(0  ,0, 40, 40)];
-    UIImageView *img1 =[[UIImageView alloc]initWithFrame:CGRectMake(10,10,20,20)];
-    img1.image =[UIImage imageNamed:@"mail.png"];
-    [self.txtEmail.leftView addSubview:img1];
         
+        textField.leftViewMode=UITextFieldViewModeAlways;
+        textField.leftView =[[UIView alloc]initWithFrame:CGRectMake(0  ,0, 40, 40)];
+        UIImageView *imgView =[[UIImageView alloc]initWithFrame:CGRectMake(10,10,20,20)];
+        imgView.image =[UIImage imageNamed:[NSString stringWithFormat:@"%@",[arrImage objectAtIndex:i-1]]];
+        [textField.leftView addSubview:imgView];
         
 
-    
-    
-     
-    self.txtPassword.leftViewMode=UITextFieldViewModeAlways;
-    self.txtPassword.leftView =[[UIView alloc]initWithFrame:CGRectMake(0  ,0, 40, 40)];
-    UIImageView *img2 =[[UIImageView alloc]initWithFrame:CGRectMake(10,10,20,20)];
-    img2.image =[UIImage imageNamed:@"lock.png"];
-    [self.txtPassword.leftView addSubview:img2];
-    
-    
+    }
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;

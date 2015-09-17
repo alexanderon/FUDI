@@ -34,7 +34,7 @@
     
     imageName=[[NSArray alloc]initWithObjects:@"rest.png",@"sing_user.png",@"settings.png",@"sign_out.png", nil];
     menuTitle=[[NSArray alloc]initWithObjects:@"Restaurant",@"MY PROFILE",@"SETTINGS",@"SIGN OUT",nil];
-    [self.myTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tblView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
   
    
     

@@ -17,10 +17,10 @@
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (strong, nonatomic) IBOutlet UIView *customView1;
 @property (weak, nonatomic) IBOutlet UILabel *lblCustomView;
-- (IBAction)callButtonClicked:(id)sender;
+- (IBAction)btnDetailClick:(id)sender;
 
-@property NSMutableArray *arr;
-@property NSDictionary *vanue;
+@property NSMutableArray *arrVanues;
+@property NSDictionary *dictVanue;
 //@property NSMutableArray *arrLocation;
 //@property NSMutableArray *arrAdress;
 

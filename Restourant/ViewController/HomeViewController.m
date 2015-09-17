@@ -401,12 +401,12 @@
     
     if(btn.tag>=0)
     {
-        controller.arr = [[NSMutableArray alloc]initWithObjects:[filteredTableData objectAtIndex:btn.tag], nil];
+        controller.arrVanues = [[NSMutableArray alloc]initWithObjects:[filteredTableData objectAtIndex:btn.tag], nil];
     }
     else
     {
       //  controller.arrLocation =arrLocation;  `
-        controller.arr =[[NSMutableArray alloc]initWithArray:filteredTableData copyItems:YES];
+        controller.arrVanues =[[NSMutableArray alloc]initWithArray:filteredTableData copyItems:YES];
     }
     [self.navigationController pushViewController:controller animated:YES];
 

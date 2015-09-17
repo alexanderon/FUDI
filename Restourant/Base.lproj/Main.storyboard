@@ -2099,7 +2099,7 @@ Cg
                     <navigationItem key="navigationItem" id="8An-9N-0GU"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="myTableView" destination="UZK-ly-kBX" id="9eG-a0-dwz"/>
+                        <outlet property="tblView" destination="UZK-ly-kBX" id="0xH-az-k3G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RoC-vd-KSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2658,7 +2658,7 @@ Cg
                                 <rect key="frame" x="4" y="3" width="288" height="63"/>
                             </variation>
                             <connections>
-                                <action selector="callButtonClicked:" destination="O1e-JU-EfT" eventType="touchUpInside" id="Sbl-s0-J60"/>
+                                <action selector="btnDetailClick:" destination="O1e-JU-EfT" eventType="touchUpInside" id="ewQ-D7-LMd"/>
                             </connections>
                         </button>
                     </subviews>

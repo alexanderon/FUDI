@@ -28,8 +28,8 @@
 @implementation MapViewController
 
 @synthesize map;
-@synthesize arr;
-@synthesize vanue;
+@synthesize arrVanues;
+@synthesize dictVanue;
 
 
 
@@ -40,12 +40,12 @@
  
   
    
-    for(int i=0;i<arr.count;i++){
+    for(int i=0;i<arrVanues.count;i++){
          
-                vanue =[arr objectAtIndex:i];
-                self.currentName =[NSString stringWithFormat:@"%@",[vanue objectForKey:@"name"]];
+                dictVanue =[arrVanues objectAtIndex:i];
+                self.currentName =[NSString stringWithFormat:@"%@",[dictVanue objectForKey:@"name"]];
                 
-                NSDictionary *location =[vanue objectForKey:@"location"];
+                NSDictionary *location =[dictVanue objectForKey:@"location"];
                 
                 NSString *lat =[location valueForKey:@"lat"];
                 NSString *lng =[location valueForKey:@"lng"];
@@ -195,19 +195,19 @@
         NSLog(@"%d",(int)view.tag);
         
         
-        if (arr.count >1) {
-            vanue =[arr objectAtIndex:view.tag];
+        if (arrVanues.count >1) {
+            dictVanue =[arrVanues objectAtIndex:view.tag];
 
         }else
         {
-            vanue=[arr objectAtIndex:0];
+            dictVanue=[arrVanues objectAtIndex:0];
             
         }
-              self.currentName =[NSString stringWithFormat:@"%@",[vanue objectForKey:@"name"]];
+              self.currentName =[NSString stringWithFormat:@"%@",[dictVanue objectForKey:@"name"]];
         
    
         {
-            NSDictionary *location =[vanue objectForKey:@"location"];
+            NSDictionary *location =[dictVanue objectForKey:@"location"];
             NSMutableArray *adress=(NSMutableArray *)[[location objectForKey:@"formattedAddress"]mutableCopy];
             NSString * formattedAddress ;
             formattedAddress=[adress componentsJoinedByString:@" "];
@@ -215,7 +215,7 @@
         }
         
         {
-            NSDictionary *stats =[vanue objectForKey:@"stats"];
+            NSDictionary *stats =[dictVanue objectForKey:@"stats"];
             self.currentusersCount=[stats valueForKey:@"usersCount"];
          
             
@@ -242,7 +242,7 @@
 }
 
 
-- (IBAction)callButtonClicked:(id)sender{
+- (IBAction)btnDetailClick:(id)sender{
  
     
     for (UIViewController *vc in self.navigationController.viewControllers)
@@ -257,7 +257,7 @@
     controller.lbladress=self.currentAdress;
     controller.lblname=self.currentName;
     controller.lblcheckinsCount=[NSString stringWithFormat:@"%@",self.currentusersCount];
-    controller.vanue=self.vanue;
+    controller.vanue=self.dictVanue;
     
     [self.navigationController pushViewController:controller animated:YES];
     
