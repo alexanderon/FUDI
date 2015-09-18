@@ -39,13 +39,13 @@
     //gesture recognizer
  
   
-   
+    NSDictionary *location;
     for(int i=0;i<arrVanues.count;i++){
          
                 dictVanue =[arrVanues objectAtIndex:i];
                 self.currentName =[NSString stringWithFormat:@"%@",[dictVanue objectForKey:@"name"]];
                 
-                NSDictionary *location =[dictVanue objectForKey:@"location"];
+                location =[dictVanue objectForKey:@"location"];
                 
                 NSString *lat =[location valueForKey:@"lat"];
                 NSString *lng =[location valueForKey:@"lng"];
@@ -85,9 +85,9 @@
         
     }
     
-    [self.map showAnnotations:map.annotations animated:YES];
+  //  [self.map showAnnotations:map.annotations animated:YES];
+    
    }
-
 
 
 
@@ -142,12 +142,21 @@
     [self.map showAnnotations:annotations animated:YES];
 }*/
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+     [self.map showAnnotations:map.annotations animated:YES];
+    [self.locationManger stopUpdatingLocation];
+}
+
 #pragma mark -user location
 
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000);
+/*-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5500, 5500);
     [self.map setRegion:[self.map regionThatFits:region] animated:YES];
-}
+    
+    [self.locationManger stopUpdatingLocation];
+
+}*/
 
 
 #pragma mark  - custom  view design
@@ -237,6 +246,8 @@
 
 
 - (IBAction)btnBack:(id)sender {
+    [self.map removeAnnotations:map.annotations];
+    [self.customView1 removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -270,9 +281,12 @@
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
     
     [self.customView1 removeFromSuperview];
-    
-    
+    [view removeFromSuperview];
 }
 
 
+
+-(void)dealloc{
+    
+}
 @end

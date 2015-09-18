@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ProfileViewController : UIViewController<UIAlertViewDelegate,UIImagePickerControllerDelegate>
+@interface ProfileViewController : UIViewController<UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lblFullName;

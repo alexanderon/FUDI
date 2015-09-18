@@ -11,7 +11,7 @@
 @implementation Validation
 
 
-+ (NSString *)validateForm {
+/*+ (NSString *)validateForm {
     NSString *errorMessage;
     
     
@@ -44,7 +44,7 @@
     
     
     
-  /*  if (!(self.txtFirstName.text.length >= 1)){
+    if (!(self.txtFirstName.text.length >= 1)){
         errorMessage = @"Please enter a first name";
     } else if (!(self.txtLastName.text.length >= 1)){
         errorMessage = @"Please enter a last name";
@@ -54,9 +54,9 @@
         errorMessage=@"Please enter a valid Mobile";
     } else if (!(self.txtPassword.text.length >= 1)){
         errorMessage = @"Please enter a valid password";
-    }*/
+    }
     
     return errorMessage;
-}
+}*/
 
 @end

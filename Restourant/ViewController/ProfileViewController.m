@@ -26,6 +26,7 @@
 @implementation ProfileViewController
 
 
+#pragma mark -view Loading
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -88,6 +89,15 @@
     
 }
 
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [self updateDisplay];
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -121,22 +131,12 @@
     }else if(![self.txtNewPassword.text    isEqual:self.txtConfirmPassword.text] ){
         errorMessage = @"Password Not Matching";
     }
-    
-    
     return errorMessage;
 }
 
 
 
 
--(void)viewDidAppear:(BOOL)animated{
-
-    [super viewDidAppear:YES];
-   
-    [self updateDisplay];
-
- 
-}
 
 
 
@@ -144,8 +144,6 @@
     [self.txtFirstName becomeFirstResponder];
     
     UIButton *buttonEdit =(UIButton *) sender;
-    
-    
     if([buttonEdit.titleLabel.text isEqual:@"Save"])
     {
         //making textfeild disabled
@@ -170,7 +168,7 @@
                 self.txtFirstName.enabled=YES;
                 self.txtLastName.enabled=YES;
                 self.txtMobile.enabled=YES;
-                
+        
                 self.txtFirstName.borderStyle=UITextBorderStyleLine;
                 self.txtLastName.borderStyle=UITextBorderStyleLine;
                 self.txtMobile.borderStyle=UITextBorderStyleLine;
@@ -249,10 +247,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
-    
     NSString *currentString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    int length = [currentString length];
+    int length = (int)[currentString length];
     if ( textField.tag ==4 && length > 10) {
         return NO;
     }
@@ -272,8 +268,8 @@
 
 - (IBAction)btnImagePickerClick:(id)sender {
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
-                                                                   message:@"This is an alert."
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"ALERT"
+                                                                   message:@"PLEASE SELECT ONE OF THE OPTION."
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction* gallaryAction = [UIAlertAction actionWithTitle:@"From Gallary" style:UIAlertActionStyleDefault
@@ -282,14 +278,22 @@
                                                               [self pickMediaFromSource:UIImagePickerControllerSourceTypePhotoLibrary];
 
                                                           }];
-    UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Click from Camera" style:UIAlertActionStyleDefault
+    UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Click from Camera"
+                                                           style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
                                                           [self pickMediaFromSource:UIImagePickerControllerSourceTypeCamera];
                                                          }];
+    
+    UIAlertAction* cancelAction=[UIAlertAction
+                                 actionWithTitle:@"Cancel"
+                                 style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                                     
+                                 }];
 
     
     [alert addAction:gallaryAction];
     [alert addAction:cameraAction];
+    [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:nil];
     
     

@@ -33,7 +33,7 @@
     self.previousTab =0;
     
     imageName=[[NSArray alloc]initWithObjects:@"rest.png",@"sing_user.png",@"settings.png",@"sign_out.png", nil];
-    menuTitle=[[NSArray alloc]initWithObjects:@"Restaurant",@"MY PROFILE",@"SETTINGS",@"SIGN OUT",nil];
+    menuTitle=[[NSArray alloc]initWithObjects:@"RESTUARANT",@"MY PROFILE",@"SETTINGS",@"SIGN OUT",nil];
     [self.tblView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
   
    

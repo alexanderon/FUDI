@@ -177,7 +177,7 @@
     
     
     NSString *currentString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    int length = [currentString length];
+    int length = (int)[currentString length];
     if ( textField.tag ==4 && length > 10) {
         return NO;
     }

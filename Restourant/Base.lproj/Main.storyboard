@@ -698,7 +698,7 @@
                                             <constraint firstAttribute="width" secondItem="qhu-FZ-jCo" secondAttribute="width" multiplier="20:1" id="5PG-hq-Rb1"/>
                                             <constraint firstItem="MYp-ou-9wX" firstAttribute="leading" secondItem="mNI-Ro-Ioi" secondAttribute="trailing" constant="14" id="5VG-Tt-FT4"/>
                                             <constraint firstAttribute="height" constant="60" id="92L-tj-EVn">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                                                <variation key="heightClass=regular-widthClass=compact" constant="65"/>
                                             </constraint>
                                             <constraint firstItem="MYp-ou-9wX" firstAttribute="width" secondItem="vhZ-WJ-5NP" secondAttribute="width" multiplier="1:20" id="Eot-Xg-ycR"/>
                                             <constraint firstAttribute="centerY" secondItem="KIq-9Y-dD4" secondAttribute="centerY" id="Fdp-DY-wMo"/>
@@ -707,14 +707,18 @@
                                                 <variation key="heightClass=regular-widthClass=compact" constant="14"/>
                                             </constraint>
                                             <constraint firstItem="qhu-FZ-jCo" firstAttribute="bottom" secondItem="MYp-ou-9wX" secondAttribute="bottom" id="HID-OE-NTU"/>
-                                            <constraint firstItem="hf5-Ym-eah" firstAttribute="top" secondItem="vhZ-WJ-5NP" secondAttribute="top" constant="20" id="Kcm-pG-Xmf"/>
+                                            <constraint firstItem="hf5-Ym-eah" firstAttribute="top" secondItem="vhZ-WJ-5NP" secondAttribute="top" constant="20" id="Kcm-pG-Xmf">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                            </constraint>
                                             <constraint firstItem="KIq-9Y-dD4" firstAttribute="top" secondItem="hf5-Ym-eah" secondAttribute="top" id="Kzc-97-gHF"/>
                                             <constraint firstItem="hf5-Ym-eah" firstAttribute="top" secondItem="KIq-9Y-dD4" secondAttribute="top" id="MSZ-D6-7ds"/>
                                             <constraint firstAttribute="centerY" secondItem="hf5-Ym-eah" secondAttribute="centerY" id="QOe-li-EoT"/>
                                             <constraint firstItem="mNI-Ro-Ioi" firstAttribute="leading" secondItem="hf5-Ym-eah" secondAttribute="trailing" constant="10" id="SJE-Fe-Amf"/>
                                             <constraint firstAttribute="bottom" secondItem="mNI-Ro-Ioi" secondAttribute="bottom" constant="5" id="dcc-TS-6hb"/>
                                             <constraint firstItem="mNI-Ro-Ioi" firstAttribute="top" secondItem="vhZ-WJ-5NP" secondAttribute="top" constant="15" id="gNF-FP-hya"/>
+                                            <constraint firstItem="Ydc-Ro-qbp" firstAttribute="centerY" secondItem="hf5-Ym-eah" secondAttribute="centerY" id="h06-cc-VyV"/>
                                             <constraint firstItem="qhu-FZ-jCo" firstAttribute="top" secondItem="KIq-9Y-dD4" secondAttribute="top" id="hq9-rY-IGL"/>
+                                            <constraint firstItem="MYp-ou-9wX" firstAttribute="top" secondItem="hf5-Ym-eah" secondAttribute="top" id="iEm-fc-2pB"/>
                                             <constraint firstAttribute="trailing" secondItem="MYp-ou-9wX" secondAttribute="trailing" constant="10" id="m7f-kU-687"/>
                                             <constraint firstItem="MYp-ou-9wX" firstAttribute="height" secondItem="vhZ-WJ-5NP" secondAttribute="height" multiplier="1:10" id="mJB-r9-pvJ"/>
                                             <constraint firstItem="KIq-9Y-dD4" firstAttribute="bottom" secondItem="qhu-FZ-jCo" secondAttribute="bottom" id="nwS-pi-2sm"/>
@@ -728,7 +732,7 @@
                                             <constraint firstItem="qhu-FZ-jCo" firstAttribute="bottom" secondItem="KIq-9Y-dD4" secondAttribute="bottom" id="sl7-yl-Wza"/>
                                             <constraint firstItem="MYp-ou-9wX" firstAttribute="top" secondItem="vhZ-WJ-5NP" secondAttribute="top" constant="20" id="ucR-jQ-wMq"/>
                                             <constraint firstItem="KIq-9Y-dD4" firstAttribute="top" secondItem="MYp-ou-9wX" secondAttribute="top" id="v8l-b5-Byc"/>
-                                            <constraint firstAttribute="width" secondItem="hf5-Ym-eah" secondAttribute="width" multiplier="14:1" id="xXF-6Q-qCv"/>
+                                            <constraint firstAttribute="width" secondItem="hf5-Ym-eah" secondAttribute="width" multiplier="13:1" id="xXF-6Q-qCv"/>
                                             <constraint firstItem="hf5-Ym-eah" firstAttribute="leading" secondItem="vhZ-WJ-5NP" secondAttribute="leading" constant="4" id="yhl-BL-0Oz">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                                             </constraint>
@@ -752,6 +756,7 @@
                                                 <exclude reference="v8l-b5-Byc"/>
                                                 <exclude reference="5VG-Tt-FT4"/>
                                                 <exclude reference="Eot-Xg-ycR"/>
+                                                <exclude reference="iEm-fc-2pB"/>
                                                 <exclude reference="m7f-kU-687"/>
                                                 <exclude reference="mJB-r9-pvJ"/>
                                                 <exclude reference="qUV-vB-lOb"/>
@@ -770,6 +775,7 @@
                                                 <exclude reference="HID-OE-NTU"/>
                                                 <exclude reference="hq9-rY-IGL"/>
                                                 <exclude reference="sl7-yl-Wza"/>
+                                                <exclude reference="h06-cc-VyV"/>
                                                 <exclude reference="SJE-Fe-Amf"/>
                                                 <exclude reference="dcc-TS-6hb"/>
                                                 <exclude reference="gNF-FP-hya"/>
@@ -793,12 +799,13 @@
                                                 <exclude reference="v8l-b5-Byc"/>
                                                 <include reference="5VG-Tt-FT4"/>
                                                 <exclude reference="Eot-Xg-ycR"/>
+                                                <exclude reference="iEm-fc-2pB"/>
                                                 <include reference="m7f-kU-687"/>
                                                 <exclude reference="mJB-r9-pvJ"/>
                                                 <include reference="qUV-vB-lOb"/>
                                                 <include reference="ucR-jQ-wMq"/>
                                                 <exclude reference="zOh-zk-3Ci"/>
-                                                <include reference="Kcm-pG-Xmf"/>
+                                                <exclude reference="Kcm-pG-Xmf"/>
                                                 <exclude reference="MSZ-D6-7ds"/>
                                                 <exclude reference="QOe-li-EoT"/>
                                                 <exclude reference="qzx-6T-XOH"/>
@@ -811,6 +818,7 @@
                                                 <include reference="HID-OE-NTU"/>
                                                 <include reference="hq9-rY-IGL"/>
                                                 <include reference="sl7-yl-Wza"/>
+                                                <include reference="h06-cc-VyV"/>
                                                 <include reference="SJE-Fe-Amf"/>
                                                 <include reference="dcc-TS-6hb"/>
                                                 <include reference="gNF-FP-hya"/>
@@ -1422,7 +1430,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER4-Sw-oNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773" y="1245"/>
+            <point key="canvasLocation" x="2067" y="1020"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="EHT-LU-WPa">
@@ -2104,7 +2112,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RoC-vd-KSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1273" y="1279"/>
+            <point key="canvasLocation" x="1152" y="1032.75"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="dQs-qn-VwX">
@@ -2506,7 +2514,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0C-6O-sH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-345" y="984.75"/>
+            <point key="canvasLocation" x="-447" y="1032.75"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="h71-PW-ZWc">
@@ -2644,25 +2652,19 @@ Cg
                             <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="125" y="20" width="137" height="30"/>
-                            </variation>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18F-8T-52e">
                             <rect key="frame" x="5" y="0.0" width="29" height="30"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="210" maxY="0.0"/>
-                            <state key="normal" image="inderlok.jpg">
+                            <state key="normal" image="detail_list-image.jpg">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="4" y="3" width="288" height="63"/>
-                            </variation>
                             <connections>
                                 <action selector="btnDetailClick:" destination="O1e-JU-EfT" eventType="touchUpInside" id="ewQ-D7-LMd"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.16078431372549021" green="0.12156862745098039" blue="0.16470588235294117" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.16470588235294117" green="0.11208493062575706" blue="0.12196684671230955" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="btQ-ug-NeK" secondAttribute="centerY" id="30C-J3-9ke"/>
                         <constraint firstAttribute="trailing" secondItem="18F-8T-52e" secondAttribute="trailing" id="3Wl-t7-pFn"/>
@@ -2693,7 +2695,7 @@ Cg
                     </variation>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1773" y="330"/>
+            <point key="canvasLocation" x="2097" y="318"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="nrr-p1-Fll">
@@ -2732,7 +2734,7 @@ Cg
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXv-OZ-f8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="1279"/>
+            <point key="canvasLocation" x="375" y="1212.75"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="5lR-oO-KHa">
@@ -3977,7 +3979,6 @@ Cg
         <image name="186672-200.png" width="147" height="138"/>
         <image name="back.png" width="50" height="50"/>
         <image name="detail_list-image.jpg" width="640" height="540"/>
-        <image name="inderlok.jpg" width="50" height="50"/>
         <image name="logo.png" width="83" height="70"/>
         <image name="map.png" width="50" height="50"/>
         <image name="menu.png" width="50" height="50"/>
